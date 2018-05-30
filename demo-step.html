@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/lib/jquery-step/css/jquery.step.css">
+    <style type="text/css">
+        .step-list {
+            min-height: 200px;
+
+        }
+
+        ul {
+            display: -webkit-box;
+        }
+
+    </style>
+</head>
+<body>
+<div class="step-body" id="myStep">
+
+    <div class="step-header" style="width:80%">
+        <ul>
+            <li><p>阅读流明</p></li>
+            <li><p>用电申请</p></li>
+            <li><p>完成</p></li>
+            <li><p>完成</p></li>
+            <li><p>完成</p></li>
+            <li><p>完成</p></li>
+            <li><p>完成</p></li>
+            <li><p>完成</p></li>
+        </ul>
+    </div>
+    <div class="step-content">
+        <div class="step-list">
+            阅读流明
+        </div>
+        <div class="step-list">
+            用电申请
+        </div>
+        <div class="step-list">
+            完成
+        </div>
+
+    </div>
+
+</div>
+
+<div>
+    <button id="preBtn">上一步</button>
+    <button id="nextBtn">下一步</button>
+    <button id="goBtn">跳到步</button>
+</div>
+
+<script src="static/lib/jquery/1.8/jquery.min.js"></script>
+<script src="static/lib/jquery-step/js/jquery.step.js"></script>
+<script>
+    $(function () {
+
+        var step = $("#myStep").step();
+
+        $("#preBtn").click(function (event) {
+            var yes = step.preStep();//上一步
+        });
+        $("#nextBtn").click(function (event) {
+            var yes = step.nextStep();
+        });
+        $("#goBtn").click(function (event) {
+            var yes = step.goStep(3);//到指定步
+        });
+        $('ul li').click(function () {
+            var yes = step.goStep($('ul li').index($(this)) + 1);
+//            console.log($('ul li').index($(this)))
+        })
+
+    });
+</script>
+</body>
+</html>
